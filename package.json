@@ -5,6 +5,14 @@
   "version": "0.1.0",
   "publisher": "simzhou",
   "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SimZhou/vscode-kaldi-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SimZhou/vscode-kaldi-reader/issues"
+  },
+  "homepage": "https://github.com/SimZhou/vscode-kaldi-reader#readme",
   "engines": {
     "vscode": "^1.74.0"
   },
