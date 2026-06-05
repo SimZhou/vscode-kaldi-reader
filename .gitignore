@@ -4,3 +4,12 @@ dist/
 .DS_Store
 .tmp/
 .vscode-test/
+
+# Local agent handoff files
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+docs/
+
+# Local fixtures are kept out of the public repository.
+tests/
