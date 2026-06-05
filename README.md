@@ -1,20 +1,63 @@
-# Kaldi Reader
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/kaldi-reader-logo-placeholder.svg" alt="Kaldi Reader" width="180">
+</p>
 
-Kaldi Reader 是一个 VS Code 扩展，用来浏览 Kaldi `.scp` 和 `.ark` 数据。当前初版先作为 Kaldi 数据分流器：
+<h1 align="center">Kaldi Reader</h1>
 
-- 在 `.scp` 文件中识别 `*.ark:<offset>` 引用并生成可点击链接；
-- 点击 wav ark 时读取 offset 处字节，确认 `RIFF/WAVE` 后调用 AudioLens；
-- feats、alignment、int-vector 等非音频 ark 由 Kaldi Reader 接管；当前已支持 Kaldi binary `FloatMatrix(FM)` 和 `Int32Vector` 的 raw 文本输出。
+<p align="center">
+  English | <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.zh-CN.md">简体中文</a> | <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.ja.md">日本語</a>
+</p>
 
-## 测试数据
+---
 
-仓库内保留了几组本地样本：
+Kaldi Reader is a Visual Studio Code extension for reading and routing Kaldi `.scp` and `.ark` data. It focuses on Kaldi archive entries and keeps ordinary audio path linking in AudioLens.
 
-- `tests/kaldi-wavark`：wav ark 和对应 `.scp`，来自 AudioLens 测试数据；
-- `tests/repacked`：feats ark、alignment ark 和对应 `.scp`。
-- `tests/normal_wavlist_and_wavscp`：普通音频路径列表样本，供 AudioLens 文本路径链接能力参考。
+## Highlights
 
-相对 ark 路径解析只支持两类稳定基准：先按 `.scp` 文件所在目录解析，再按当前 workspace 根目录解析。其他隐含 CWD 的相对路径不会自动猜测。
+- Detects `*.ark:<offset>` references in Kaldi `.scp` files and turns them into clickable links.
+- Validates wav ark entries at the byte offset and opens them with AudioLens.
+- Reads Kaldi binary `FloatMatrix(FM)` entries as raw matrix text.
+- Reads Kaldi binary `Int32Vector` entries as raw integer vector text.
+- Resolves relative ark paths from the `.scp` file directory first, then from the current workspace root.
+- Works as a workspace extension for local and Remote SSH workspaces.
+- Follows the VS Code display language by default.
+
+## Scope
+
+Kaldi Reader handles Kaldi ark offset links:
+
+```text
+wav.ark:12345
+feats.ark:12345
+ali.ark:12345
+```
+
+AudioLens handles ordinary audio paths in text files, such as `.wav`, `.flac`, `.mp3`, `.pcm`, and `.raw`. AudioLens can still open `.ark` files directly, but Kaldi Reader owns text-link detection for `*.ark:<offset>`.
+
+## Relative Ark Paths
+
+Relative ark paths are resolved with two stable bases:
+
+1. The directory of the current `.scp` file.
+2. The current workspace root.
+
+Other implicit CWD-based paths are not guessed automatically.
+
+## Test Data
+
+The repository includes local samples:
+
+- `tests/kaldi-wavark`: wav ark and `.scp` cases.
+- `tests/repacked`: feats and alignment ark cases.
+- `tests/normal_wavlist_and_wavscp`: ordinary audio path list samples for AudioLens handoff context.
+
+## Install From VSIX
+
+Install a local packaged build with:
+
+```bash
+code --install-extension dist/kaldi-reader-0.1.0.vsix
+```
 
 ## Development
 
@@ -24,3 +67,13 @@ npm run build
 npm run typecheck
 npm run package
 ```
+
+Press `F5` in VS Code and choose the extension development host. Open one of the `.scp` files in `tests/` and click an ark entry link.
+
+## Author
+
+SimZhou: https://simzhou.com/en/about/
+
+## Copyright
+
+Copyright (c) 2026 SimZhou. All rights reserved.
