@@ -10,56 +10,74 @@
 
 ---
 
-Kaldi Reader は、VS Code で Kaldi の `.scp` ファイルを読み取り、`.ark` entry を確認するための拡張です。Kaldi ark entry に集中し、通常の音声ファイルパスのリンク化は AudioLens に任せます。
+Kaldi Reader は、VS Code で Kaldi の `.scp` ファイルを開き、`.ark:<offset>` 参照をクリックして実際の entry を確認するための拡張です。トレーニングデータ、feature matrix、alignment vector、wav ark に格納された音声片段の確認に使えます。
 
-## Install
+対応している Kaldi ark entry:
 
-Install from the Visual Studio Marketplace:
+- `wav.ark:<offset>`: offset が `RIFF/WAVE` を指すことを確認し、AudioLens で音声を開きます。
+- `FloatMatrix(FM)`: 全 matrix を raw text として開きます。
+- `CompressedMatrix(CM / CM2 / CM3)`: entry を展開し、全 matrix を raw text として開きます。
+- `Int32Vector`: alignment でよく使われる整数列を raw text として開きます。
+
+## インストール
+
+Visual Studio Marketplace からインストールできます:
 
 https://marketplace.visualstudio.com/items?itemName=simzhou.kaldi-reader
 
-Or from Open VSX:
+Open VSX からもインストールできます:
 
 https://open-vsx.org/extension/simzhou/kaldi-reader
 
-## Highlights
+通常の `.wav`、`.flac`、`.mp3`、`.pcm`、`.raw` などの音声ファイルパスもクリックして開きたい場合は、音声ビューア拡張の AudioLens もインストールしてください:
 
-- Kaldi `.scp` ファイル内の `*.ark:<offset>` 参照を検出し、クリック可能なリンクにします。
-- wav ark entry の offset が `RIFF/WAVE` を指すことを確認し、AudioLens で開きます。
-- Kaldi binary `FloatMatrix(FM)` を raw matrix text として出力します。
-- Kaldi binary `Int32Vector` を raw integer vector text として出力します。
-- 相対 ark パスは、まず `.scp` ファイルのディレクトリ、次に現在の workspace root から解決します。
-- ローカルおよび Remote SSH workspace で動作する workspace extension です。
-- VS Code の表示言語に従います。
+https://marketplace.visualstudio.com/items?itemName=simzhou.audiolens
 
-## Scope
+## 使い方
 
-Kaldi Reader handles Kaldi ark offset links:
+Kaldi の `.scp` ファイルを開きます。例:
 
 ```text
-wav.ark:12345
-feats.ark:12345
-ali.ark:12345
+utt001 /data/train/feats.ark:12345
+utt002 feats.ark:67890
+utt003 ali.ark:345
 ```
 
-AudioLens handles ordinary audio paths in text files, such as `.wav`, `.flac`, `.mp3`, `.pcm`, and `.raw`. AudioLens can still open `.ark` files directly, but Kaldi Reader owns text-link detection for `*.ark:<offset>`.
+Kaldi Reader は `*.ark:<offset>` 参照をクリック可能なリンクにします。リンクをクリックすると:
 
-## Relative Ark Paths
+- wav ark entry は AudioLens で開きます。
+- feature matrix entry は raw matrix text として開きます。
+- alignment / int-vector entry は raw integer sequence text として開きます。
 
-Relative ark paths are resolved with two stable bases:
+Kaldi Reader は workspace extension なので、ローカル workspace と Remote SSH workspace の両方で動作します。`.scp` ファイルと参照先の `.ark` ファイルがリモートマシン上にある場合、解析と読み込みはリモート側の extension host で行われます。
 
-1. The directory of the current `.scp` file.
-2. The current workspace root.
+## パス解決
 
-Other implicit CWD-based paths are not guessed automatically.
+相対 ark パスは、次の 2 つの安定した基準で解決します:
 
-## Install From VSIX
+1. 現在の `.scp` ファイルがあるディレクトリ。
+2. 現在の workspace root。
+
+暗黙の CWD に依存するパスは自動では推測しません。大きなトレーニングデータディレクトリでは同名ファイルが多いため、誤った ark ファイルを開くことを避けるためです。
+
+## 通常の音声パス
+
+Kaldi Reader が処理するのは `*.ark:<offset>` だけです。通常の音声パス、例えば:
+
+```text
+/data/audio/utt001.wav
+utt002 /data/audio/utt002.flac
+```
+
+AudioLens を使ってください。AudioLens はテキストファイル内の通常の音声パスをクリック可能なリンクにできます。
+
+## VSIX からインストール
 
 ```bash
 code --install-extension dist/kaldi-reader-0.1.1.vsix
 ```
 
-## Development
+## 開発
 
 ```bash
 npm install
@@ -68,9 +86,9 @@ npm run typecheck
 npm run package
 ```
 
-Press `F5` in VS Code and choose the extension development host. Open a Kaldi `.scp` file and click an ark entry link.
+VS Code で `F5` を押して extension development host を起動し、Kaldi `.scp` ファイルを開いて ark entry リンクをクリックします。
 
-## Author
+## 作者
 
 SimZhou: https://simzhou.com/en/about/
 

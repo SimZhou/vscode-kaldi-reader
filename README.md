@@ -10,7 +10,14 @@
 
 ---
 
-Kaldi Reader is a Visual Studio Code extension for reading Kaldi `.scp` files and inspecting `.ark` entries directly in VS Code. It focuses on Kaldi archive entries and keeps ordinary audio path linking in AudioLens.
+Kaldi Reader lets you open Kaldi `.scp` files in VS Code and click `.ark:<offset>` references to inspect the actual entry. It is built for browsing training data, feature matrices, alignment vectors, and audio segments packed in wav ark files.
+
+Supported Kaldi ark entries:
+
+- `wav.ark:<offset>`: validates `RIFF/WAVE` at the offset and opens the audio with AudioLens.
+- `FloatMatrix(FM)`: opens the full matrix as raw text.
+- `CompressedMatrix(CM / CM2 / CM3)`: decompresses the entry and opens the full matrix as raw text.
+- `Int32Vector`: opens the full integer sequence as raw text, commonly used for alignments.
 
 ## Install
 
@@ -22,36 +29,47 @@ Or from Open VSX:
 
 https://open-vsx.org/extension/simzhou/kaldi-reader
 
-## Highlights
+For ordinary audio file paths such as `.wav`, `.flac`, `.mp3`, `.pcm`, and `.raw`, install AudioLens, the companion audio viewer extension:
 
-- Detects `*.ark:<offset>` references in Kaldi `.scp` files and turns them into clickable links.
-- Validates wav ark entries at the byte offset and opens them with AudioLens.
-- Reads Kaldi binary `FloatMatrix(FM)` entries as raw matrix text.
-- Reads Kaldi binary `Int32Vector` entries as raw integer vector text.
-- Resolves relative ark paths from the `.scp` file directory first, then from the current workspace root.
-- Works as a workspace extension for local and Remote SSH workspaces.
-- Follows the VS Code display language by default.
+https://marketplace.visualstudio.com/items?itemName=simzhou.audiolens
 
-## Scope
+## Usage
 
-Kaldi Reader handles Kaldi ark offset links:
+Open a Kaldi `.scp` file, for example:
 
 ```text
-wav.ark:12345
-feats.ark:12345
-ali.ark:12345
+utt001 /data/train/feats.ark:12345
+utt002 feats.ark:67890
+utt003 ali.ark:345
 ```
 
-AudioLens handles ordinary audio paths in text files, such as `.wav`, `.flac`, `.mp3`, `.pcm`, and `.raw`. AudioLens can still open `.ark` files directly, but Kaldi Reader owns text-link detection for `*.ark:<offset>`.
+Kaldi Reader turns `*.ark:<offset>` references into clickable links. When you click a link:
 
-## Relative Ark Paths
+- wav ark entries open in AudioLens.
+- feature matrix entries open as raw matrix text.
+- alignment / int-vector entries open as raw integer sequence text.
+
+Kaldi Reader is a workspace extension and works in both local and Remote SSH workspaces. If the `.scp` file and the referenced `.ark` file are on a remote machine, parsing and reading happen in the remote extension host.
+
+## Path Resolution
 
 Relative ark paths are resolved with two stable bases:
 
 1. The directory of the current `.scp` file.
 2. The current workspace root.
 
-Other implicit CWD-based paths are not guessed automatically.
+Other implicit CWD-based paths are not guessed automatically. This avoids opening the wrong ark file in large training directories where duplicate file names are common.
+
+## Ordinary Audio Paths
+
+Kaldi Reader only handles `*.ark:<offset>`. For ordinary audio paths such as:
+
+```text
+/data/audio/utt001.wav
+utt002 /data/audio/utt002.flac
+```
+
+Use AudioLens. AudioLens can turn ordinary audio paths in text files into clickable links.
 
 ## Install From VSIX
 

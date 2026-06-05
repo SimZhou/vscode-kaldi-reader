@@ -10,7 +10,14 @@
 
 ---
 
-Kaldi Reader 是一个用于在 VS Code 中读取 Kaldi `.scp` 文件并查看 `.ark` entry 的扩展。它专注处理 Kaldi ark entry，普通音频路径链接交给 AudioLens。
+Kaldi Reader 让你可以直接在 VS Code 里打开 Kaldi `.scp` 文件，并点击其中的 `.ark:<offset>` 引用查看对应数据。它适合查看训练数据、特征矩阵、alignment 序列，以及打包在 wav ark 里的音频片段。
+
+当前支持的 Kaldi ark entry：
+
+- `wav.ark:<offset>`：校验 offset 处是否为 `RIFF/WAVE`，然后用 AudioLens 打开音频。
+- `FloatMatrix(FM)`：以 raw 矩阵文本显示全部数据。
+- `CompressedMatrix(CM / CM2 / CM3)`：解压后以 raw 矩阵文本显示全部数据。
+- `Int32Vector`：以 raw 整数序列显示全部数据，常用于 alignment。
 
 ## 安装
 
@@ -22,36 +29,47 @@ https://marketplace.visualstudio.com/items?itemName=simzhou.kaldi-reader
 
 https://open-vsx.org/extension/simzhou/kaldi-reader
 
-## 功能亮点
+如果你需要点击普通 `.wav`、`.flac`、`.mp3`、`.pcm`、`.raw` 等音频文件路径，推荐同时安装音频查看扩展 AudioLens：
 
-- 识别 Kaldi `.scp` 文件中的 `*.ark:<offset>` 引用并生成可点击链接。
-- 校验 wav ark offset 处是否为 `RIFF/WAVE`，并调用 AudioLens 打开。
-- 将 Kaldi binary `FloatMatrix(FM)` 读取为 raw 矩阵文本。
-- 将 Kaldi binary `Int32Vector` 读取为 raw 整数向量文本。
-- 相对 ark 路径先按 `.scp` 文件所在目录解析，再按当前 workspace 根目录解析。
-- 作为 workspace extension 支持本地和 Remote SSH 工作区。
-- 默认跟随 VS Code 显示语言。
+https://marketplace.visualstudio.com/items?itemName=simzhou.audiolens
 
-## 职责范围
+## 使用方法
 
-Kaldi Reader 负责 Kaldi ark offset 链接：
+打开一个 Kaldi `.scp` 文件，例如：
 
 ```text
-wav.ark:12345
-feats.ark:12345
-ali.ark:12345
+utt001 /data/train/feats.ark:12345
+utt002 feats.ark:67890
+utt003 ali.ark:345
 ```
 
-AudioLens 负责文本文件中的普通音频路径，例如 `.wav`、`.flac`、`.mp3`、`.pcm`、`.raw`。AudioLens 仍然可以直接打开 `.ark` 文件，但 `*.ark:<offset>` 的文本链接检测由 Kaldi Reader 负责。
+Kaldi Reader 会把 `*.ark:<offset>` 变成可点击链接。点击后：
 
-## 相对 Ark 路径
+- 如果 entry 是 wav ark，插件会调用 AudioLens 打开音频。
+- 如果 entry 是 feature matrix，插件会直接打开一份 raw 矩阵文本。
+- 如果 entry 是 alignment / int vector，插件会直接打开一份 raw 整数序列文本。
+
+这个扩展是 workspace extension，支持本地工作区和 Remote SSH 工作区。远程机器上的 `.scp` 指向远程机器上的 `.ark` 时，会在远程扩展宿主里解析和读取。
+
+## 路径解析
 
 相对 ark 路径只支持两类稳定基准：
 
 1. 当前 `.scp` 文件所在目录。
 2. 当前 workspace 根目录。
 
-其他隐含 CWD 的路径不会自动猜测。
+其他隐含 CWD 的路径不会自动猜测。这样可以避免在训练数据目录很大、文件名重复很多时误打开错误的 ark 文件。
+
+## 普通音频路径
+
+Kaldi Reader 只处理 `*.ark:<offset>`。如果文本里是普通音频路径，例如：
+
+```text
+/data/audio/utt001.wav
+utt002 /data/audio/utt002.flac
+```
+
+请使用 AudioLens 打开。AudioLens 可以把文本文件中的普通音频路径转换成可点击链接。
 
 ## 从 VSIX 安装
 
