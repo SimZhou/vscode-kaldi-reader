@@ -56,7 +56,7 @@ Other implicit CWD-based paths are not guessed automatically.
 ## Install From VSIX
 
 ```bash
-code --install-extension dist/kaldi-reader-0.1.0.vsix
+code --install-extension dist/kaldi-reader-0.1.1.vsix
 ```
 
 ## Development

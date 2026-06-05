@@ -58,7 +58,7 @@ Other implicit CWD-based paths are not guessed automatically.
 Install a local packaged build with:
 
 ```bash
-code --install-extension dist/kaldi-reader-0.1.0.vsix
+code --install-extension dist/kaldi-reader-0.1.1.vsix
 ```
 
 ## Development

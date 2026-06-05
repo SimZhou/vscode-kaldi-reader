@@ -56,7 +56,7 @@ AudioLens 负责文本文件中的普通音频路径，例如 `.wav`、`.flac`�
 ## 从 VSIX 安装
 
 ```bash
-code --install-extension dist/kaldi-reader-0.1.0.vsix
+code --install-extension dist/kaldi-reader-0.1.1.vsix
 ```
 
 ## 开发
