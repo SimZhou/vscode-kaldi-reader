@@ -12,6 +12,16 @@
 
 Kaldi Reader は、VS Code で Kaldi の `.scp` ファイルを読み取り、`.ark` entry を確認するための拡張です。Kaldi ark entry に集中し、通常の音声ファイルパスのリンク化は AudioLens に任せます。
 
+## Install
+
+Install from the Visual Studio Marketplace:
+
+https://marketplace.visualstudio.com/items?itemName=simzhou.kaldi-reader
+
+Or from Open VSX:
+
+https://open-vsx.org/extension/simzhou/kaldi-reader
+
 ## Highlights
 
 - Kaldi `.scp` ファイル内の `*.ark:<offset>` 参照を検出し、クリック可能なリンクにします。

@@ -12,6 +12,16 @@
 
 Kaldi Reader is a Visual Studio Code extension for reading Kaldi `.scp` files and inspecting `.ark` entries directly in VS Code. It focuses on Kaldi archive entries and keeps ordinary audio path linking in AudioLens.
 
+## Install
+
+Install from the Visual Studio Marketplace:
+
+https://marketplace.visualstudio.com/items?itemName=simzhou.kaldi-reader
+
+Or from Open VSX:
+
+https://open-vsx.org/extension/simzhou/kaldi-reader
+
 ## Highlights
 
 - Detects `*.ark:<offset>` references in Kaldi `.scp` files and turns them into clickable links.
@@ -42,14 +52,6 @@ Relative ark paths are resolved with two stable bases:
 2. The current workspace root.
 
 Other implicit CWD-based paths are not guessed automatically.
-
-## Test Data
-
-The repository includes local samples:
-
-- `tests/kaldi-wavark`: wav ark and `.scp` cases.
-- `tests/repacked`: feats and alignment ark cases.
-- `tests/normal_wavlist_and_wavscp`: ordinary audio path list samples for AudioLens handoff context.
 
 ## Install From VSIX
 

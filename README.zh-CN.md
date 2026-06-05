@@ -12,6 +12,16 @@
 
 Kaldi Reader 是一个用于在 VS Code 中读取 Kaldi `.scp` 文件并查看 `.ark` entry 的扩展。它专注处理 Kaldi ark entry，普通音频路径链接交给 AudioLens。
 
+## 安装
+
+从 Visual Studio Marketplace 安装：
+
+https://marketplace.visualstudio.com/items?itemName=simzhou.kaldi-reader
+
+也可以从 Open VSX 安装：
+
+https://open-vsx.org/extension/simzhou/kaldi-reader
+
 ## 功能亮点
 
 - 识别 Kaldi `.scp` 文件中的 `*.ark:<offset>` 引用并生成可点击链接。
@@ -42,14 +52,6 @@ AudioLens 负责文本文件中的普通音频路径，例如 `.wav`、`.flac`�
 2. 当前 workspace 根目录。
 
 其他隐含 CWD 的路径不会自动猜测。
-
-## 测试数据
-
-仓库内包含本地样本：
-
-- `tests/kaldi-wavark`：wav ark 和 `.scp` 样本。
-- `tests/repacked`：feats 和 alignment ark 样本。
-- `tests/normal_wavlist_and_wavscp`：普通音频路径列表样本，作为 AudioLens 交接上下文。
 
 ## 从 VSIX 安装
 
