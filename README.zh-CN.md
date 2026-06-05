@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/kaldi-reader-logo-placeholder.png" alt="Kaldi Reader" width="180">
+  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/vscode-kaldi-reader.LOGO.v1.png" alt="Kaldi Reader" width="180">
 </p>
 
-<h1 align="center">Kaldi Reader</h1>
+<h1 align="center">Kaldi Reader - SCP & ARK Viewer</h1>
 
 <p align="center">
   <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.md">English</a> | 简体中文 | <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.ja.md">日本語</a>
@@ -10,7 +10,7 @@
 
 ---
 
-Kaldi Reader 是一个用于读取和分流 Kaldi `.scp` / `.ark` 数据的 VS Code 扩展。它专注处理 Kaldi ark entry，普通音频路径链接交给 AudioLens。
+Kaldi Reader 是一个用于在 VS Code 中读取 Kaldi `.scp` 文件并查看 `.ark` entry 的扩展。它专注处理 Kaldi ark entry，普通音频路径链接交给 AudioLens。
 
 ## 功能亮点
 

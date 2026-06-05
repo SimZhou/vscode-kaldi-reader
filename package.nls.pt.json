@@ -1,5 +1,5 @@
 {
-  "extension.displayName": "Kaldi Reader",
-  "extension.description": "Leia e inspecione entradas SCP e ARK do Kaldi no VS Code.",
+  "extension.displayName": "Kaldi Reader - SCP & ARK Viewer",
+  "extension.description": "Leia arquivos SCP do Kaldi e inspecione entradas ARK diretamente no VS Code.",
   "command.openArkEntry.title": "Kaldi Reader: Abrir entrada Ark"
 }

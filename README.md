@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/kaldi-reader-logo-placeholder.png" alt="Kaldi Reader" width="180">
+  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/vscode-kaldi-reader.LOGO.v1.png" alt="Kaldi Reader" width="180">
 </p>
 
-<h1 align="center">Kaldi Reader</h1>
+<h1 align="center">Kaldi Reader - SCP & ARK Viewer</h1>
 
 <p align="center">
   English | <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.zh-CN.md">简体中文</a> | <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.ja.md">日本語</a>
@@ -10,7 +10,7 @@
 
 ---
 
-Kaldi Reader is a Visual Studio Code extension for reading and routing Kaldi `.scp` and `.ark` data. It focuses on Kaldi archive entries and keeps ordinary audio path linking in AudioLens.
+Kaldi Reader is a Visual Studio Code extension for reading Kaldi `.scp` files and inspecting `.ark` entries directly in VS Code. It focuses on Kaldi archive entries and keeps ordinary audio path linking in AudioLens.
 
 ## Highlights
 

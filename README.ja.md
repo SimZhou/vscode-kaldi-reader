@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/kaldi-reader-logo-placeholder.png" alt="Kaldi Reader" width="180">
+  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/vscode-kaldi-reader.LOGO.v1.png" alt="Kaldi Reader" width="180">
 </p>
 
-<h1 align="center">Kaldi Reader</h1>
+<h1 align="center">Kaldi Reader - SCP & ARK Viewer</h1>
 
 <p align="center">
   <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.md">English</a> | <a href="https://github.com/SimZhou/vscode-kaldi-reader/blob/main/README.zh-CN.md">简体中文</a> | 日本語
@@ -10,7 +10,7 @@
 
 ---
 
-Kaldi Reader は、Kaldi の `.scp` / `.ark` データを読み取り、適切なビューアへ振り分ける Visual Studio Code 拡張です。Kaldi ark entry に集中し、通常の音声ファイルパスのリンク化は AudioLens に任せます。
+Kaldi Reader は、VS Code で Kaldi の `.scp` ファイルを読み取り、`.ark` entry を確認するための拡張です。Kaldi ark entry に集中し、通常の音声ファイルパスのリンク化は AudioLens に任せます。
 
 ## Highlights
 
