@@ -1,0 +1,56 @@
+{
+  "name": "kaldi-reader",
+  "displayName": "%extension.displayName%",
+  "description": "%extension.description%",
+  "version": "0.1.0",
+  "publisher": "simzhou",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:kaldiReader.openArkEntry",
+    "onLanguage:kaldi-scp"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kaldiReader.openArkEntry",
+        "title": "%command.openArkEntry.title%"
+      }
+    ],
+    "languages": [
+      {
+        "id": "kaldi-scp",
+        "aliases": [
+          "Kaldi SCP",
+          "kaldi-scp"
+        ],
+        "extensions": [
+          ".scp"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "npm run clean && npm run build && npx @vscode/vsce package -o dist/kaldi-reader-0.1.0.vsix",
+    "vscode:prepublish": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/vscode": "1.74.0",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.2"
+  }
+}

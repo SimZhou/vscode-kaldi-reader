@@ -1,0 +1,14 @@
+src/**
+scripts/**
+node_modules/**
+tests/**
+.git/**
+.vscode/**
+.DS_Store
+.gitignore
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+docs/**
+tsconfig.json
+*.vsix
