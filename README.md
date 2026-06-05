@@ -14,7 +14,7 @@ Kaldi Reader lets you open Kaldi `.scp` files in VS Code and click `.ark:<offset
 
 Supported Kaldi ark entries:
 
-- `wav.ark:<offset>`: validates `RIFF/WAVE` at the offset and opens the audio with AudioLens.
+- `wav.ark:<offset>`: validates `RIFF/WAVE` at the offset and opens the audio with [AudioLens](https://github.com/SimZhou/vscode-audiolens).
 - `FloatMatrix(FM)`: opens the full matrix as raw text.
 - `CompressedMatrix(CM / CM2 / CM3)`: decompresses the entry and opens the full matrix as raw text.
 - `Int32Vector`: opens the full integer sequence as raw text, commonly used for alignments.
@@ -29,7 +29,7 @@ Or from Open VSX:
 
 https://open-vsx.org/extension/simzhou/kaldi-reader
 
-For ordinary audio file paths such as `.wav`, `.flac`, `.mp3`, `.pcm`, and `.raw`, install AudioLens, the companion audio viewer extension:
+For ordinary audio file paths such as `.wav`, `.flac`, `.mp3`, `.pcm`, and `.raw`, install [AudioLens](https://github.com/SimZhou/vscode-audiolens), the companion audio viewer extension:
 
 https://marketplace.visualstudio.com/items?itemName=simzhou.audiolens
 
@@ -45,7 +45,7 @@ utt003 ali.ark:345
 
 Kaldi Reader turns `*.ark:<offset>` references into clickable links. When you click a link:
 
-- wav ark entries open in AudioLens.
+- wav ark entries open in [AudioLens](https://github.com/SimZhou/vscode-audiolens).
 - feature matrix entries open as raw matrix text.
 - alignment / int-vector entries open as raw integer sequence text.
 
@@ -69,7 +69,7 @@ Kaldi Reader only handles `*.ark:<offset>`. For ordinary audio paths such as:
 utt002 /data/audio/utt002.flac
 ```
 
-Use AudioLens. AudioLens can turn ordinary audio paths in text files into clickable links.
+Use [AudioLens](https://github.com/SimZhou/vscode-audiolens). AudioLens can turn ordinary audio paths in text files into clickable links.
 
 ## Install From VSIX
 

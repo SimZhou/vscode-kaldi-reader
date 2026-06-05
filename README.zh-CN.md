@@ -14,7 +14,7 @@ Kaldi Reader 让你可以直接在 VS Code 里打开 Kaldi `.scp` 文件，并�
 
 当前支持的 Kaldi ark entry：
 
-- `wav.ark:<offset>`：校验 offset 处是否为 `RIFF/WAVE`，然后用 AudioLens 打开音频。
+- `wav.ark:<offset>`：校验 offset 处是否为 `RIFF/WAVE`，然后用 [AudioLens](https://github.com/SimZhou/vscode-audiolens) 打开音频。
 - `FloatMatrix(FM)`：以 raw 矩阵文本显示全部数据。
 - `CompressedMatrix(CM / CM2 / CM3)`：解压后以 raw 矩阵文本显示全部数据。
 - `Int32Vector`：以 raw 整数序列显示全部数据，常用于 alignment。
@@ -29,7 +29,7 @@ https://marketplace.visualstudio.com/items?itemName=simzhou.kaldi-reader
 
 https://open-vsx.org/extension/simzhou/kaldi-reader
 
-如果你需要点击普通 `.wav`、`.flac`、`.mp3`、`.pcm`、`.raw` 等音频文件路径，推荐同时安装音频查看扩展 AudioLens：
+如果你需要点击普通 `.wav`、`.flac`、`.mp3`、`.pcm`、`.raw` 等音频文件路径，推荐同时安装音频查看扩展 [AudioLens](https://github.com/SimZhou/vscode-audiolens)：
 
 https://marketplace.visualstudio.com/items?itemName=simzhou.audiolens
 
@@ -45,7 +45,7 @@ utt003 ali.ark:345
 
 Kaldi Reader 会把 `*.ark:<offset>` 变成可点击链接。点击后：
 
-- 如果 entry 是 wav ark，插件会调用 AudioLens 打开音频。
+- 如果 entry 是 wav ark，插件会调用 [AudioLens](https://github.com/SimZhou/vscode-audiolens) 打开音频。
 - 如果 entry 是 feature matrix，插件会直接打开一份 raw 矩阵文本。
 - 如果 entry 是 alignment / int vector，插件会直接打开一份 raw 整数序列文本。
 
@@ -69,7 +69,7 @@ Kaldi Reader 只处理 `*.ark:<offset>`。如果文本里是普通音频路径�
 utt002 /data/audio/utt002.flac
 ```
 
-请使用 AudioLens 打开。AudioLens 可以把文本文件中的普通音频路径转换成可点击链接。
+请使用 [AudioLens](https://github.com/SimZhou/vscode-audiolens) 打开。AudioLens 可以把文本文件中的普通音频路径转换成可点击链接。
 
 ## 从 VSIX 安装
 
