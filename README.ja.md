@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/kaldi-reader-logo-placeholder.svg" alt="Kaldi Reader" width="180">
+  <img src="https://raw.githubusercontent.com/SimZhou/vscode-kaldi-reader/main/logo/kaldi-reader-logo-placeholder.png" alt="Kaldi Reader" width="180">
 </p>
 
 <h1 align="center">Kaldi Reader</h1>
