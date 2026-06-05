@@ -68,7 +68,7 @@ npm run typecheck
 npm run package
 ```
 
-在 VS Code 中按 `F5` 启动扩展开发宿主，然后打开 `tests/` 里的 `.scp` 文件并点击 ark entry 链接。
+在 VS Code 中按 `F5` 启动扩展开发宿主，然后打开 Kaldi `.scp` 文件并点击 ark entry 链接。
 
 ## 作者
 

@@ -68,6 +68,8 @@ npm run typecheck
 npm run package
 ```
 
+Press `F5` in VS Code and choose the extension development host. Open a Kaldi `.scp` file and click an ark entry link.
+
 ## Author
 
 SimZhou: https://simzhou.com/en/about/
