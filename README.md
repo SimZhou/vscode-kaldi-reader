@@ -76,7 +76,7 @@ Use [AudioLens](https://github.com/SimZhou/vscode-audiolens). AudioLens can turn
 Install a local packaged build with:
 
 ```bash
-code --install-extension dist/kaldi-reader-0.1.1.vsix
+code --install-extension dist/kaldi-reader-0.1.2.vsix
 ```
 
 ## Development

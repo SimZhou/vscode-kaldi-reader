@@ -2,7 +2,7 @@
   "name": "kaldi-reader",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "simzhou",
   "license": "SEE LICENSE IN LICENSE",
   "icon": "logo/kaldi-reader-icon.sticker.png",
@@ -24,6 +24,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:kaldiReader.openArkEntry",
     "onLanguage:kaldi-scp"
   ],
@@ -53,7 +54,7 @@
     "build": "node scripts/build.mjs",
     "watch": "node scripts/build.mjs --watch",
     "typecheck": "tsc --noEmit",
-    "package": "npm run clean && npm run build && npx @vscode/vsce package -o dist/kaldi-reader-0.1.1.vsix",
+    "package": "npm run clean && npm run build && npx @vscode/vsce package -o dist/kaldi-reader-0.1.2.vsix",
     "vscode:prepublish": "npm run clean && npm run build"
   },
   "devDependencies": {

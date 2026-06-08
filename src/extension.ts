@@ -10,12 +10,14 @@ import {
   ResolvedArkLocation
 } from "./kaldiPath";
 import { ScpDocumentLinkProvider } from "./scpLinks";
+import { ArkTerminalLinkProvider } from "./terminalLinks";
 import { isWavArkEntry } from "./wavArk";
 
 interface OpenArkEntryArgument {
   location?: string;
   originalLocation?: string;
   sourceScp?: string;
+  baseDir?: string;
   unresolved?: boolean;
   key?: string;
 }
@@ -27,6 +29,7 @@ interface NormalizedOpenArkEntryArgument extends OpenArkEntryArgument {
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand("kaldiReader.openArkEntry", openArkEntry),
+    vscode.window.registerTerminalLinkProvider(new ArkTerminalLinkProvider()),
     vscode.languages.registerDocumentLinkProvider(
       { language: "kaldi-scp", scheme: "file" },
       new ScpDocumentLinkProvider()
@@ -145,6 +148,9 @@ function getRequestRelativeBaseDirs(request: OpenArkEntryArgument): string[] {
   const baseDirs: string[] = [];
   if (request.sourceScp) {
     baseDirs.push(path.dirname(request.sourceScp));
+  }
+  if (request.baseDir) {
+    baseDirs.push(request.baseDir);
   }
   for (const folder of vscode.workspace.workspaceFolders ?? []) {
     baseDirs.push(folder.uri.fsPath);

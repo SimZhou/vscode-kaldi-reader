@@ -74,7 +74,7 @@ utt002 /data/audio/utt002.flac
 ## 从 VSIX 安装
 
 ```bash
-code --install-extension dist/kaldi-reader-0.1.1.vsix
+code --install-extension dist/kaldi-reader-0.1.2.vsix
 ```
 
 ## 开发
